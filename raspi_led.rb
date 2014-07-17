@@ -15,7 +15,7 @@ CONDITIONS = {
                'turbo-on'     => lambda{ `cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_cur_freq`.to_i > 700000 ? 1 : 0 } 
              }
 
-$poll_rate = ARGV[1] ? ARGV[1].to_i : 5
+$poll_rate = ARGV[1] ? ARGV[1].to_f : 2.0
 $status = :off
 
 

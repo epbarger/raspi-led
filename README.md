@@ -9,7 +9,7 @@ The general format is ...
 
 `sudo ./raspi_led.rb mode poll_rate`
 
-... where `mode` is a mode from the supported list and `poll_rate` is an integer. `poll_rate` defaults to *5* and is only used for custom modes.
+... where `mode` is a mode from the supported list and `poll_rate` is a float or int. `poll_rate` defaults to *2* and is only used for custom modes.
 
 Root access is necessary as the script modifies the following firmware files
  > - /sys/class/led/led0/trigger
