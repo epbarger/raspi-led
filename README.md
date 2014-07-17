@@ -1,7 +1,7 @@
 raspi-led
 =============
 
-This ruby script allows you to override the default behavior of the Raspberry Pi's 'ACT' (Activity) LED. The script supports the built in firmware LED modes as well as custom modes you define via bash. 
+This ruby script allows you to override the default behavior of the Raspberry Pi's 'ACT' (Activity) LED. The script supports the built in firmware LED modes as well as custom modes you define via bash and ruby. 
 
 Usage
 =============
@@ -35,6 +35,7 @@ These modes are provided by the Raspberry Pi firmware.
 Custom modes
 ------------
  > - ssh-user *- Lights when one or more users are logged in remotely*
+ > - hot-temp *- Lights when temp is above 55C*
  
 Custom modes run in the background, constantly checking their state and updating the LED if necessary. To add your own mode, see the raspi_led.rb source. 
 

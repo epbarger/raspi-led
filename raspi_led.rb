@@ -3,13 +3,14 @@
 MODES = %w(none mmc0 timer oneshot heartbeat backlight gpio cpu0 default-on)
 
 # Add the name of your mode here
-CUSTOM_MODES = %w(ssh-user)
+CUSTOM_MODES = %w(ssh-user hot-temp)
 
 # Conditions added must return an integer
 # 1 or greater will turn the LED on
 # 0 will turn it off
 CONDITIONS = { 
-               'ssh-user' => lambda{ `who | grep pts | wc -l`.to_i }
+               'ssh-user' => lambda{ `who | grep pts | wc -l`.to_i },
+               'hot-temp' => lambda{ `/opt/vc/bin/vcgencmd measure_temp`.match('[0-9]{2}')[0].to_i >= 55 ? 1 : 0 }
              }
 
 $poll_rate = ARGV[1] ? ARGV[1].to_i : 5
@@ -47,6 +48,7 @@ end
 
 if CUSTOM_MODES.include?(mode) && CONDITIONS[mode]
   `echo none > /sys/class/leds/led0/trigger`
+  led_off
   while true
     if (CONDITIONS[mode].call >= 1) && ($status == :off)
       led_on
