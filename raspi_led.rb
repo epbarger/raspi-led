@@ -1,6 +1,6 @@
 #!/usr/bin/env ruby
 
-MODES = %w(none mmc0 timer oneshot heartbeat backlight gpio cpu0 default-on)
+FIRMWARE_MODES = %w(none mmc0 timer oneshot heartbeat backlight gpio cpu0 default-on)
 
 # Add the name of your mode here
 CUSTOM_MODES = %w(ssh-user hot-temp high-avg-cpu turbo-on)
@@ -35,7 +35,7 @@ def print_modes
   puts "Custom Modes:"
   puts "\t#{CUSTOM_MODES.join(' ')}"
   puts "Firmware Modes:"
-  puts "\t#{MODES.join(' ')}"
+  puts "\t#{FIRMWARE_MODES.join(' ')}"
 end
 
 
@@ -60,7 +60,7 @@ if CUSTOM_MODES.include?(mode) && CONDITIONS[mode]
     sleep $poll_rate
   end
 
-elsif MODES.include?(mode)
+elsif FIRMWARE_MODES.include?(mode)
   led_off
   `echo #{mode} > /sys/class/leds/led0/trigger`
   exit
