@@ -22,23 +22,23 @@ Modes
 
 Firmware modes
 -------------
- > - none *- LED off*
- > - mmc0 *- SD card activity (the Pi's default)*
- > - timer *- Blink on a ~1 second timer*
- > - oneshot *- ???*
- > - heartbeat *- Blink with a "heartbeat" pattern*
- > - backlight *- ???*
- > - gpio *- Likely disables Pi control but allows GPIO control (untested)*
- > - cpu0 *- CPU activity*
- > - default-on *- LED on*
+ > - `none` *- LED off*
+ > - `mmc0` *- SD card activity (the Pi's default)*
+ > - `timer` *- Blink on a ~1 second timer*
+ > - `oneshot` *- ???*
+ > - `heartbeat` *- Blink with a "heartbeat" pattern*
+ > - `backlight` *- ???*
+ > - `gpio` *- Likely disables Pi control but allows GPIO control (untested)*
+ > - `cpu0` *- CPU activity*
+ > - `default-on` *- LED on*
 
 These modes are provided by the Raspberry Pi firmware.
 Custom modes
 ------------
- > - ssh-user *- Lights when one or more users are logged in remotely*
- > - hot-temp *- Lights when temp is above 60C*
- > - high-avg-cpu *- Lights when the average CPU usage over the last minute is greater than 80%*
- > - turbo-on *- Lights when the CPU overclock kicks in. You must have an overclock enabled in `raspi-config`*
+ > - `ssh-user` *- Lights when one or more users are logged in remotely*
+ > - `hot-temp` *- Lights when temp is above 60C*
+ > - `high-avg-cpu` *- Lights when the average CPU usage over the last minute is greater than 80%*
+ > - `turbo-on` *- Lights when the raspi-config CPU overclock kicks in*
  
 Custom modes run in the background, constantly checking their state and updating the LED if necessary. To add your own mode, see the raspi_led.rb source. 
 
