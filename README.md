@@ -36,7 +36,7 @@ Custom modes
 ------------
  > - ssh-user *- Lights when one or more users are logged in remotely*
  
-Custom modes run in the background, constantly checking their state and updating the LED if necessary.
+Custom modes run in the background, constantly checking their state and updating the LED if necessary. To add your own mode, see the raspi_led.rb source. 
 
 Running on boot
 =============
