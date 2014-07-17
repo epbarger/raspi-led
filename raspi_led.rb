@@ -3,7 +3,7 @@
 MODES = %w(none mmc0 timer oneshot heartbeat backlight gpio cpu0 default-on)
 
 # Add the name of your mode here
-CUSTOM_MODES = %w(ssh-user hot-temp high-avg-cpu)
+CUSTOM_MODES = %w(ssh-user hot-temp high-avg-cpu turbo-on)
 
 # Conditions added must return an integer
 # 1 or greater will turn the LED on
@@ -11,7 +11,8 @@ CUSTOM_MODES = %w(ssh-user hot-temp high-avg-cpu)
 CONDITIONS = { 
                'ssh-user'     => lambda{ `who | grep pts | wc -l`.to_i },
                'hot-temp'     => lambda{ `/opt/vc/bin/vcgencmd measure_temp`.match('[0-9]{2}')[0].to_i >= 60 ? 1 : 0 },
-               'high-avg-cpu' => lambda{ (`uptime`.match('0\.[0-9]{2}')[0].to_f * 100).to_i >= 80 ? 1 : 0}
+               'high-avg-cpu' => lambda{ (`uptime`.match('0\.[0-9]{2}')[0].to_f * 100).to_i >= 80 ? 1 : 0 },
+               'turbo-on'     => lambda{ `cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_cur_freq`.to_i > 700000 ? 1 : 0 } 
              }
 
 $poll_rate = ARGV[1] ? ARGV[1].to_i : 5

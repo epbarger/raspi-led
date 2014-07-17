@@ -38,6 +38,7 @@ Custom modes
  > - ssh-user *- Lights when one or more users are logged in remotely*
  > - hot-temp *- Lights when temp is above 60C*
  > - high-avg-cpu *- Lights when the average CPU usage over the last minute is greater than 80%*
+ > - turbo-on *- Lights when the CPU overclock kicks in. You must have an overclock enabled in `raspi-config`*
  
 Custom modes run in the background, constantly checking their state and updating the LED if necessary. To add your own mode, see the raspi_led.rb source. 
 
