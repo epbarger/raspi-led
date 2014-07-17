@@ -30,12 +30,14 @@ Firmware modes
  > - backlight *- ???*
  > - gpio *- Likely disables Pi control but allows GPIO control (untested)*
  > - cpu0 *- CPU activity*
+ > - default-on *- LED on*
 
 These modes are provided by the Raspberry Pi firmware.
 Custom modes
 ------------
  > - ssh-user *- Lights when one or more users are logged in remotely*
- > - hot-temp *- Lights when temp is above 55C*
+ > - hot-temp *- Lights when temp is above 60C*
+ > - high-avg-cpu *- Lights when the average CPU usage over the last minute is greater than 80%*
  
 Custom modes run in the background, constantly checking their state and updating the LED if necessary. To add your own mode, see the raspi_led.rb source. 
 
